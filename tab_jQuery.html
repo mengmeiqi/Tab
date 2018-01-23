@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>tab_jQuery</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        li{
+            list-style: none;
+        }
+        #container{
+            height:200px;
+            width:300px;
+            border:1px solid;
+            margin:100px auto;
+        }
+        #nav li{
+            width:98px;
+            border:1px solid;
+            height:28px;
+            float:left;
+            text-align: center;
+            line-height:28px;
+            cursor:pointer;
+        }
+        #nav .selected{
+            background: #cccccc;
+        }
+        #content{
+            text-indent:10px;
+        }
+        #content div{
+            display:none;
+        }
+        #content .selected{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="nav">
+            <li class="selected">HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+        <div id="content">
+            <div class="selected">HTML</div>
+            <div>CSS</div>
+            <div>JavaScript</div>
+        </div>
+    </div>
+    <script src="jquery-1.11.2.js"></script>
+    <script>
+        $(function(){
+            $("#nav li").on("click",function(){
+                var index = $("#nav li").index(this);
+                $(this).addClass("selected").siblings().removeClass("selected");
+                $("#content div").eq(index).addClass("selected").siblings().removeClass("selected");
+            });
+        });
+    </script>
+</body>
+</html>
